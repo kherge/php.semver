@@ -135,6 +135,74 @@ class Version implements VersionInterface
     }
 
     /**
+     * Increments the major version number.
+     *
+     * When an backwards incompatible change is made, the major version
+     * number must be incremented. This method will increment the major
+     * version number and reset both minor and patch numbers to zero (i.e.
+     * `0`) and clear any pre-release or build metadata.
+     *
+     * ```php
+     * $incremented = $version->incrementMajor();
+     * ```
+     *
+     * @param integer $amount The amount to increment by.
+     *
+     * @return VersionInterface The new semantic version number.
+     */
+    public function incrementMajor(int $amount = 1) : VersionInterface
+    {
+        return new Version($this->major + $amount, 0, 0, [], []);
+    }
+
+    /**
+     * Increments the minor version number.
+     *
+     * When a new backwards compatible feature is released, or something is
+     * deprecated, the minor version number must be incremented. This method
+     * will increment the minor version number and reset the patch number to
+     * zero (i.e. `0`) and clear any pre-release or build metadata.
+     *
+     * ```php
+     * $incremented = $version->incrementMinor();
+     * ```
+     *
+     * @param integer $amount The amount to increment by.
+     *
+     * @return VersionInterface The new semantic version number.
+     */
+    public function incrementMinor(int $amount = 1) : VersionInterface
+    {
+        return new Version($this->major, $this->minor + $amount, 0, [], []);
+    }
+
+    /**
+     * Increments the patch version number.
+     *
+     * When a backwards compatible bug fix is released, the patch version
+     * number must be incremented. This method will increment the patch
+     * version number and clear any pre-release or build metadata.
+     *
+     * ```php
+     * $increment = $version->incrementPatch();
+     * ```
+     *
+     * @param integer $amount The amount to increment by.
+     *
+     * @return VersionInterface The new semantic version number.
+     */
+    public function incrementPatch(int $amount = 1) : VersionInterface
+    {
+        return new Version(
+            $this->major,
+            $this->minor,
+            $this->patch + $amount,
+            [],
+            []
+        );
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function isStable() : bool

@@ -171,6 +171,150 @@ class VersionTest extends TestCase
     }
 
     /**
+     * Verify that the major version number can be incremented.
+     *
+     * @covers ::incrementMajor
+     */
+    public function testIncrementTheMajorVersionNumber()
+    {
+        $version = new Version(1, 2, 3, ['alpha', '1'], ['20161004']);
+
+        $incremented = $version->incrementMajor();
+
+        self::assertNotSame(
+            $version,
+            $incremented,
+            'A new version number was not returned.'
+        );
+
+        self::assertEquals(
+            [],
+            $incremented->getBuild(),
+            'The build metadata was not cleared.'
+        );
+
+        self::assertEquals(
+            2,
+            $incremented->getMajor(),
+            'The major version number was not incremented.'
+        );
+
+        self::assertEquals(
+            0,
+            $incremented->getMinor(),
+            'The minor version number was not reset.'
+        );
+
+        self::assertEquals(
+            0,
+            $incremented->getPatch(),
+            'The patch version number was not reset.'
+        );
+
+        self::assertEquals(
+            [],
+            $incremented->getPreRelease(),
+            'The pre-release metadata was not cleared.'
+        );
+    }
+
+    /**
+     * Verify that the minor version number can be incremented.
+     *
+     * @covers ::incrementMinor
+     */
+    public function testIncrementTheMinorVersionNumber()
+    {
+        $version = new Version(1, 2, 3, ['alpha', '1'], ['20161004']);
+
+        $incremented = $version->incrementMinor();
+
+        self::assertNotSame(
+            $version,
+            $incremented,
+            'A new version number was not returned.'
+        );
+
+        self::assertEquals(
+            [],
+            $incremented->getBuild(),
+            'The build metadata was not cleared.'
+        );
+
+        self::assertEquals(
+            1,
+            $incremented->getMajor(),
+            'The major version number was not kept.'
+        );
+
+        self::assertEquals(
+            3,
+            $incremented->getMinor(),
+            'The minor version number was not incremented.'
+        );
+
+        self::assertEquals(
+            0,
+            $incremented->getPatch(),
+            'The patch version number was not reset.'
+        );
+
+        self::assertEquals(
+            [],
+            $incremented->getPreRelease(),
+            'The pre-release metadata was not cleared.'
+        );
+    }
+
+    /**
+     * Verify that the patch version number can be incremented.
+     *
+     * @covers ::incrementPatch
+     */
+    public function testIncrementThePatchVersionNumber()
+    {
+        $version = new Version(1, 2, 3, ['alpha', '1'], ['20161004']);
+
+        $incremented = $version->incrementPatch();
+
+        self::assertNotSame(
+            $version,
+            $incremented,
+            'A new version number was not returned.'
+        );
+
+        self::assertEquals(
+            [],
+            $incremented->getBuild(),
+            'The build metadata was not cleared.'
+        );
+
+        self::assertEquals(
+            1,
+            $incremented->getMajor(),
+            'The major version number was not kept.'
+        );
+
+        self::assertEquals(
+            2,
+            $incremented->getMinor(),
+            'The minor version number was not kept.'
+        );
+
+        self::assertEquals(
+            4,
+            $incremented->getPatch(),
+            'The patch version number was not incremented.'
+        );
+
+        self::assertEquals(
+            [],
+            $incremented->getPreRelease(),
+            'The pre-release metadata was not cleared.'
+        );
+    }
+
+    /**
      * Verify that the stableness can be checked.
      *
      * @param Version $version The version to check.
