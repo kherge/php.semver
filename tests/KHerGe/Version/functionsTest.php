@@ -4,6 +4,7 @@ namespace Test\KHerGe\Version;
 
 use PHPUnit_Framework_TestCase as TestCase;
 
+use function KHerGe\Version\is_valid;
 use function KHerGe\Version\parse_components;
 
 /**
@@ -13,6 +14,85 @@ use function KHerGe\Version\parse_components;
  */
 class functionsTest extends TestCase
 {
+    /**
+     * Returns string representations for validation testing.
+     *
+     * @return array The test case arguments.
+     */
+    public function getStringRepresentations() : array
+    {
+        return [
+
+            ['x.0.0', false],
+            ['0.x.0', false],
+            ['0.0.x', false],
+
+            ['-1.0.0', false],
+            ['0.-1.0', false],
+            ['0.0.-1', false],
+
+            ['0.0.0-', false],
+            ['0.0.0+', false],
+
+            ['0.0.0-!', false],
+            ['0.0.0+!', false],
+
+            ['0.0.0+0+0', false],
+
+            ['00.0.0', false],
+            ['0.00.0', false],
+            ['0.0.00', false],
+
+            ['00.00.00', false],
+
+            ['0.0.0', true],
+            ['1.0.0', true],
+            ['0.1.0', true],
+            ['0.0.1', true],
+            ['1.1.1', true],
+
+            ['0.0.0+0', true],
+            ['0.0.0-0', true],
+
+            ['0.0.0-0+0', true],
+            ['0.0.0-0-0', true],
+            ['0.0.0+0-0', true],
+            ['0.0.0-a-a', true],
+            ['0.0.0-a+a', true],
+            ['0.0.0+a-a', true],
+
+            ['10.0.0', true],
+            ['0.10.0', true],
+            ['0.0.10', true],
+            ['10.10.10', true],
+
+        ];
+    }
+
+    /**
+     * Verify that the string representation can be validated.
+     *
+     * @param string  $string The string representation.
+     * @param boolean $valid  Is the representation valid?
+     *
+     * @covers \KHerGe\Version\is_valid
+     *
+     * @dataProvider getStringRepresentations
+     */
+    public function testValidateAStringRepresentation(
+        string $string,
+        bool $valid
+    ) {
+        self::assertSame(
+            $valid,
+            is_valid($string),
+            sprintf(
+                'The string representation was unexpectedly %s.',
+                $valid ? 'not valid' : 'valid'
+            )
+        );
+    }
+
     /**
      * Verify that the components can be parsed from a string.
      *

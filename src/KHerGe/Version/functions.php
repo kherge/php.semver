@@ -3,6 +3,48 @@
 namespace KHerGe\Version;
 
 /**
+ * The expression for a valid string representation of a semantic version number.
+ *
+ * @var string
+ */
+define(
+    'VERSION_FORMAT',
+    <<<'REGEX'
+/^
+    # major
+    (?:0|[1-9]\d*)\.
+
+    # minor
+    (?:0|[1-9]\d*)\.
+
+    # patch
+    (?:0|[1-9]\d*)
+
+    # pre-release
+    (?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?
+
+    # build
+    (?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?
+$/x
+REGEX
+);
+
+/**
+ * Checks if a string representation is a valid semantic version number.
+ *
+ * ???
+ *
+ * @param string $string The string to check.
+ *
+ * @return boolean Returns `true` if the string representation is a valid
+ *                 semantic version number. Otherwise, `false` is returned.
+ */
+function is_valid(string $string)
+{
+    return (0 < preg_match(VERSION_FORMAT, $string));
+}
+
+/**
  * Parses a string representation into semantic version number components.
  *
  * This function will break apart a string representation of a semantic
