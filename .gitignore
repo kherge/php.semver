@@ -1,0 +1,5 @@
+# Ignore managed dependencies.
+/vendor/
+
+# Ignore dependency lock file.
+/composer.lock
