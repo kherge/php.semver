@@ -2,6 +2,7 @@
 
 namespace Test\KHerGe\Version;
 
+use KHerGe\Version\Exception\InvalidStringRepresentationException;
 use PHPUnit_Framework_TestCase as TestCase;
 
 use function KHerGe\Version\is_valid;
@@ -91,6 +92,18 @@ class functionsTest extends TestCase
                 $valid ? 'not valid' : 'valid'
             )
         );
+    }
+
+    /**
+     * Verify that parsing an invalid string representation throws an exception.
+     *
+     * @covers \KHerGe\Version\parse_components
+     */
+    public function testParsingComponentsFromAnInvalidStringRepresentationThrowsAnException()
+    {
+        $this->expectException(InvalidStringRepresentationException::class);
+
+        parse_components('x.y.z');
     }
 
     /**

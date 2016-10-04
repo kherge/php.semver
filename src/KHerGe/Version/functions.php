@@ -2,6 +2,8 @@
 
 namespace KHerGe\Version;
 
+use KHerGe\Version\Exception\InvalidStringRepresentationException;
+
 /**
  * The expression for a valid string representation of a semantic version number.
  *
@@ -33,8 +35,9 @@ REGEX
  * Checks if a string representation is a valid semantic version number.
  *
  * This function will check if the string representation conforms to the
- * semantic version number specific (as defined in version 2). If the string
- * representation is valid, it can then be parsed into its base components.
+ * semantic version number specific (as defined in version 2.0.0). If the
+ * string representation is valid, it can then be parsed into its base
+ * components.
  *
  * ```php
  * if (is_valid('1.0.0-alpha.1+20161004')) {
@@ -76,9 +79,18 @@ function is_valid(string $string)
  * @param string $string The string representation to parse.
  *
  * @return array[]|int[] The components.
+ *
+ * @throws InvalidStringRepresentationException If the string representation
+ *                                              does not conform to the semantic
+ *                                              versioning specification
+ *                                              (version 2.0.0).
  */
 function parse_components(string $string) : array
 {
+    if (!is_valid($string)) {
+        throw InvalidStringRepresentationException::with($string);
+    }
+
     $build = explode('+', $string, 2);
     $string = array_shift($build);
     $build = array_pop($build);
