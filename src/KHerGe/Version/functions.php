@@ -32,7 +32,15 @@ REGEX
 /**
  * Checks if a string representation is a valid semantic version number.
  *
- * ???
+ * This function will check if the string representation conforms to the
+ * semantic version number specific (as defined in version 2). If the string
+ * representation is valid, it can then be parsed into its base components.
+ *
+ * ```php
+ * if (is_valid('1.0.0-alpha.1+20161004')) {
+ *     // it is valid
+ * }
+ * ```
  *
  * @param string $string The string to check.
  *
