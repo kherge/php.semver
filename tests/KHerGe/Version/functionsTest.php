@@ -31,5 +31,17 @@ class functionsTest extends TestCase
             parse_components('1.2.3-alpha.1+20161004'),
             'The string representation was not parsed correctly.'
         );
+
+        self::assertEquals(
+            [
+                'major' => 1,
+                'minor' => 2,
+                'patch' => 3,
+                'pre-release' => [],
+                'build' => []
+            ],
+            parse_components('1.2.3'),
+            'The string representation was not parsed correctly.'
+        );
     }
 }
