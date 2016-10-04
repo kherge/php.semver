@@ -1,0 +1,28 @@
+branches:
+    only:
+        - master
+
+git:
+    depth: 1
+
+language: php
+
+matrix:
+
+    allow_failures:
+        - php: nightly
+        - php: hhvm-nightly
+
+    fast_finish: true
+
+    include:
+        - php: 7.0
+        - php: nightly
+        - php: hhvm-nightly
+          sudo: required
+          dist: trusty
+          group: edge
+
+script: phpunit --testdox
+
+sudo: false
