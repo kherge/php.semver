@@ -39,7 +39,7 @@ class EqualToTest extends AbstractCompareTestCase
 
         self::assertFalse(
             $constraint->allows($this->createVersion(4)),
-            'The versions 1.2.3 and 4.5.6 should not be equal.'
+            'The versions 1.0.0 and 4.0.0 should not be equal.'
         );
     }
 }
