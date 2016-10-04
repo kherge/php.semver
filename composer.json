@@ -1,6 +1,6 @@
 {
     "type": "library",
-    "name": "kherge/version",
+    "name": "kherge/semver",
     "description": "Manages semantic version numbers and compares them.",
     "keywords": ["semver", "semantic", "versioning"],
     "license": [
