@@ -17,6 +17,19 @@ namespace KHerGe\Version;
 interface VersionInterface
 {
     /**
+     * Returns a string representation of the semantic version number.
+     *
+     * A semantic version number consists of major, minor, and patch number
+     * delimited by a dot (i.e. `.`). The number may optionally be followed
+     * by pre-release metadata, prefixed with a dash (i.e. `-`). The number
+     * may also be followed by build metadata, prefixed with a plus (i.e.
+     * `+`).
+     *
+     * @return string The string representation.
+     */
+    public function __toString();
+
+    /**
      * Returns the build metadata.
      *
      * The build metadata is a list of identifiers used to identify specifics

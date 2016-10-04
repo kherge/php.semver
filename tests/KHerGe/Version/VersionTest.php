@@ -80,6 +80,27 @@ class VersionTest extends TestCase
     }
 
     /**
+     * Verify that the object can be cast as a string.
+     *
+     * @covers ::__toString
+     */
+    public function testCastingToStringReturnsAStringRepresentation()
+    {
+        self::assertEquals(
+            sprintf(
+                '%d.%d.%d-%s+%s',
+                $this->major,
+                $this->minor,
+                $this->patch,
+                join('.', $this->preRelease),
+                join('.', $this->build)
+            ),
+            (string) $this->version,
+            'The expected string representation was not returned.'
+        );
+    }
+
+    /**
      * Verify that the build metadata can be retrieved.
      *
      * @covers ::getBuild

@@ -70,6 +70,33 @@ class Version implements VersionInterface
     /**
      * {@inheritdoc}
      */
+    public function __toString()
+    {
+        $preRelease = '';
+
+        if (!empty($this->preRelease)) {
+            $preRelease = '-' . join('.', $this->preRelease);
+        }
+
+        $build = '';
+
+        if (!empty($this->build)) {
+            $build = '+' . join('.', $this->build);
+        }
+
+        return sprintf(
+            '%d.%d.%d%s%s',
+            $this->major,
+            $this->minor,
+            $this->patch,
+            $preRelease,
+            $build
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getBuild() : array
     {
         return $this->build;
