@@ -22,6 +22,9 @@
     ],
 
     "autoload": {
+        "files": [
+            "src/KHerGe/Version/Compare/functions.php"
+        ],
         "psr-4": {
             "KHerGe\\Version\\": "src/KHerGe/Version"
         }
