@@ -2,6 +2,10 @@
 
 namespace KHerGe\Version;
 
+use KHerGe\Version\Compare\Constraint\EqualTo;
+use KHerGe\Version\Compare\Constraint\GreaterThan;
+use KHerGe\Version\Compare\Constraint\LessThan;
+
 /**
  * Manages the information for a semantic version number as a value object.
  *
@@ -200,6 +204,47 @@ class Version implements VersionInterface
             [],
             []
         );
+    }
+
+    /**
+     * Checks if this version number is equal to the one given.
+     *
+     * @param VersionInterface $version The version to compare against.
+     *
+     * @return boolean Returns `true` if this number is equal to the one
+     *                 that was given. Otherwise, `false` is returned.
+     */
+    public function isEqualTo(VersionInterface $version)
+    {
+        return (new EqualTo($version))->allows($this);
+    }
+
+    /**
+     * Checks if this version number is greater than the one given.
+     *
+     * @param VersionInterface $version The version to compare against.
+     *
+     * @return boolean Returns `true` if this number is greater than the one
+     *                 that was given. Otherwise, `false` is returned if the
+     *                 given number is greater or equal to this number.
+     */
+    public function isGreaterThan(VersionInterface $version)
+    {
+        return (new GreaterThan($version))->allows($this);
+    }
+
+    /**
+     * Checks if this version number is less than the one given.
+     *
+     * @param VersionInterface $version The version to compare against.
+     *
+     * @return boolean Returns `true` if this number is less than the one that
+     *                 was given. Otherwise, `false` is returned if the given
+     *                 number is less or equal to this number.
+     */
+    public function isLessThan(VersionInterface $version)
+    {
+        return (new LessThan($version))->allows($this);
     }
 
     /**

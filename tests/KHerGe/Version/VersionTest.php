@@ -315,6 +315,69 @@ class VersionTest extends TestCase
     }
 
     /**
+     * Verify that a version can be equal to another.
+     *
+     * @covers ::isEqualTo
+     */
+    public function testVersionCanEqualAnother()
+    {
+        $version = new Version(
+            $this->major,
+            $this->minor,
+            $this->patch,
+            $this->preRelease,
+            $this->build
+        );
+
+        self::assertTrue(
+            $this->version->isEqualTo($version),
+            'The version should be equal to itself.'
+        );
+    }
+
+    /**
+     * Verify that a version can be greater than another.
+     *
+     * @covers ::isGreaterThan
+     */
+    public function testVersionIsGreaterThanAnother()
+    {
+        $version = new Version(
+            $this->major,
+            $this->minor,
+            $this->patch - 1,
+            $this->preRelease,
+            []
+        );
+
+        self::assertTrue(
+            $this->version->isGreaterThan($version),
+            'The version should be greater than the other.'
+        );
+    }
+
+    /**
+     * Verify that a version can be less than another.
+     *
+     * @covers ::isLessThan
+     */
+    public function testVersionIsLessThanAnother()
+    {
+        $version = new Version(
+            $this->major,
+            $this->minor,
+            $this->patch + 1,
+            $this->preRelease,
+            []
+        );
+
+        self::assertTrue(
+            $this->version->isLessThan($version),
+            'The version should be less than the other.'
+        );
+    }
+
+    /**
      * Verify that the stableness can be checked.
      *
      * @param Version $version The version to check.
