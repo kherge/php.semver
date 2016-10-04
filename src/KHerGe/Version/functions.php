@@ -56,6 +56,34 @@ function is_valid(string $string)
 }
 
 /**
+ * Parses a string representation into a value object.
+ *
+ * This function will parse the string representation into a semantic version
+ * number value object. This value object can then be used for comparisons on
+ * other version numbers.
+ *
+ * ```php
+ * $version = parse('1.2.3-alpha.1+20161004');
+ * ```
+ *
+ * @param string $string The string representation to parse.
+ *
+ * @return Version The semantic version number value object.
+ */
+function parse(string $string)
+{
+    $components = parse_components($string);
+
+    return new Version(
+        $components['major'],
+        $components['minor'],
+        $components['patch'],
+        $components['pre-release'],
+        $components['build']
+    );
+}
+
+/**
  * Parses a string representation into semantic version number components.
  *
  * This function will break apart a string representation of a semantic

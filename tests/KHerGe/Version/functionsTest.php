@@ -3,9 +3,11 @@
 namespace Test\KHerGe\Version;
 
 use KHerGe\Version\Exception\InvalidStringRepresentationException;
+use KHerGe\Version\Version;
 use PHPUnit_Framework_TestCase as TestCase;
 
 use function KHerGe\Version\is_valid;
+use function KHerGe\Version\parse;
 use function KHerGe\Version\parse_components;
 
 /**
@@ -91,6 +93,20 @@ class functionsTest extends TestCase
                 'The string representation was unexpectedly %s.',
                 $valid ? 'not valid' : 'valid'
             )
+        );
+    }
+
+    /**
+     * Verify that a string representation can be parsed into a value object.
+     *
+     * @covers \KHerGe\Version\parse
+     */
+    public function testParseStringRepresentationIntoAValueObject()
+    {
+        self::assertEquals(
+            new Version(1, 2, 3, ['alpha', '1'], ['20161004']),
+            parse('1.2.3-alpha.1+20161004'),
+            'The value object was not created properly.'
         );
     }
 
