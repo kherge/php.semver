@@ -23,7 +23,6 @@
 
     "autoload": {
         "files": [
-            "src/KHerGe/Version/Compare/functions.php",
             "src/KHerGe/Version/functions.php"
         ],
         "psr-4": {
