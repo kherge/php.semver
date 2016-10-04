@@ -1,0 +1,45 @@
+{
+    "type": "library",
+    "name": "kherge/version",
+    "description": "Manages semantic version numbers and compares them.",
+    "keywords": ["semver", "semantic", "versioning"],
+    "license": [
+        "MIT",
+        "Apache-2.0"
+    ],
+    "support": {
+        "issues": "https://github.com/kherge/version/issues",
+        "source": "https://github.com/kherge/version"
+    },
+
+    "authors": [
+        {
+            "name": "Kevin Herrera",
+            "email": "kevin@herrera.io",
+            "homepage": "http://kevin.herrera.io/",
+            "role": "Developer"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "KHerGe\\Version\\": "src/KHerGe/Version"
+        }
+    },
+
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\KHerGe\\Version\\": "tests/KHerGe/Version"
+        }
+    },
+
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
+
+    "require": {
+        "php": ">=7.0"
+    }
+}
