@@ -9,7 +9,7 @@ use KHerGe\Version\Compare\Constraint\LessThan;
 /**
  * Manages the information for a semantic version number as a value object.
  *
- * @author Kevin Herrera <kherrera@ebsco.com>
+ * @author Kevin Herrera <kevin@herrera.io>
  */
 class Version implements VersionInterface
 {

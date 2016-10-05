@@ -12,7 +12,7 @@ namespace KHerGe\Version;
  * representing, it is strongly advised that you read and understand the
  * specification.
  *
- * @author Kevin Herrera <kherrera@ebsco.com>
+ * @author Kevin Herrera <kevin@herrera.io>
  */
 interface VersionInterface
 {
