@@ -254,4 +254,114 @@ class Version implements VersionInterface
     {
         return (0 < $this->major) && empty($this->preRelease);
     }
+
+    /**
+     * Sets the new build metadata.
+     *
+     * ```php
+     * $new = $version->setBuild(['a', 'b', 'c']);
+     * ```
+     *
+     * @param string[] $metadata The new build metadata.
+     *
+     * @return Version The new semantic version number.
+     */
+    public function setBuild(array $metadata) : Version
+    {
+        return new Version(
+            $this->major,
+            $this->minor,
+            $this->patch,
+            $this->preRelease,
+            $metadata
+        );
+    }
+
+    /**
+     * Sets the new major version number.
+     *
+     * ```php
+     * $new = $version->setMajor(9);
+     * ```
+     *
+     * @param integer $number The new major version number.
+     *
+     * @return Version The new semantic version number.
+     */
+    public function setMajor(int $number) : Version
+    {
+        return new Version(
+            $number,
+            $this->minor,
+            $this->patch,
+            $this->preRelease,
+            $this->build
+        );
+    }
+
+    /**
+     * Sets the new minor version number.
+     *
+     * ```php
+     * $new = $version->setMinor(9);
+     * ```
+     *
+     * @param integer $number The new minor version number.
+     *
+     * @return Version The new semantic version number.
+     */
+    public function setMinor(int $number) : Version
+    {
+        return new Version(
+            $this->major,
+            $number,
+            $this->patch,
+            $this->preRelease,
+            $this->build
+        );
+    }
+
+    /**
+     * Sets the new patch version number.
+     *
+     * ```php
+     * $new = $version->setPatch(9);
+     * ```
+     *
+     * @param integer $number The new patch version number.
+     *
+     * @return Version The new semantic version number.
+     */
+    public function setPatch(int $number) : Version
+    {
+        return new Version(
+            $this->major,
+            $this->minor,
+            $number,
+            $this->preRelease,
+            $this->build
+        );
+    }
+
+    /**
+     * Sets the new pre-release metadata.
+     *
+     * ```php
+     * $new = $version->setPreRelease(['a', 'b', 'c']);
+     * ```
+     *
+     * @param string[] $metadata The new pre-release metadata.
+     *
+     * @return Version The new semantic version number.
+     */
+    public function setPreRelease(array $metadata) : Version
+    {
+        return new Version(
+            $this->major,
+            $this->minor,
+            $this->patch,
+            $metadata,
+            $this->build
+        );
+    }
 }

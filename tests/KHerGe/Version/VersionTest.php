@@ -400,6 +400,241 @@ class VersionTest extends TestCase
     }
 
     /**
+     * Verify that the build metadata can be set.
+     *
+     * @covers ::setBuild
+     */
+    public function testSetNewBuildMetadata()
+    {
+        $metadata = ['n', 'r', 'g'];
+        $version = $this->version->setBuild($metadata);
+
+        self::assertNotSame(
+            $this->version,
+            $version,
+            'A new semantic version number was not returned.'
+        );
+
+        self::assertEquals(
+            $metadata,
+            $version->getBuild(),
+            'The new build metadata data was not set.'
+        );
+
+        self::assertEquals(
+            $this->version->getMajor(),
+            $version->getMajor(),
+            'The major version number was not kept.'
+        );
+
+        self::assertEquals(
+            $this->version->getMinor(),
+            $version->getMinor(),
+            'The minor version number was not kept.'
+        );
+
+        self::assertEquals(
+            $this->version->getPatch(),
+            $version->getPatch(),
+            'The patch version number was not kept.'
+        );
+
+        self::assertEquals(
+            $this->version->getPreRelease(),
+            $version->getPreRelease(),
+            'The pre-release metadata was not kept.'
+        );
+    }
+
+    /**
+     * Verify that the major version number can be set.
+     *
+     * @covers ::setMajor
+     */
+    public function testSetNewMajorVersionNumber()
+    {
+        $number = 9;
+        $version = $this->version->setMajor($number);
+
+        self::assertNotSame(
+            $this->version,
+            $version,
+            'A new semantic version number was not returned.'
+        );
+
+        self::assertEquals(
+            $this->version->getBuild(),
+            $version->getBuild(),
+            'The build metadata data was not kept.'
+        );
+
+        self::assertEquals(
+            $number,
+            $version->getMajor(),
+            'The new major version number was not set.'
+        );
+
+        self::assertEquals(
+            $this->version->getMinor(),
+            $version->getMinor(),
+            'The minor version number was not kept.'
+        );
+
+        self::assertEquals(
+            $this->version->getPatch(),
+            $version->getPatch(),
+            'The patch version number was not kept.'
+        );
+
+        self::assertEquals(
+            $this->version->getPreRelease(),
+            $version->getPreRelease(),
+            'The pre-release metadata was not kept.'
+        );
+    }
+
+    /**
+     * Verify that the minor version number can be set.
+     *
+     * @covers ::setMinor
+     */
+    public function testSetNewMinorVersionNumber()
+    {
+        $number = 9;
+        $version = $this->version->setMinor($number);
+
+        self::assertNotSame(
+            $this->version,
+            $version,
+            'A new semantic version number was not returned.'
+        );
+
+        self::assertEquals(
+            $this->version->getBuild(),
+            $version->getBuild(),
+            'The build metadata data was not kept.'
+        );
+
+        self::assertEquals(
+            $this->version->getMajor(),
+            $version->getMajor(),
+            'The major version number was not kept.'
+        );
+
+        self::assertEquals(
+            $number,
+            $version->getMinor(),
+            'The new minor version number was not set.'
+        );
+
+        self::assertEquals(
+            $this->version->getPatch(),
+            $version->getPatch(),
+            'The patch version number was not kept.'
+        );
+
+        self::assertEquals(
+            $this->version->getPreRelease(),
+            $version->getPreRelease(),
+            'The pre-release metadata was not kept.'
+        );
+    }
+
+    /**
+     * Verify that the patch version number can be set.
+     *
+     * @covers ::setPatch
+     */
+    public function testSetNewPatchVersionNumber()
+    {
+        $number = 9;
+        $version = $this->version->setPatch($number);
+
+        self::assertNotSame(
+            $this->version,
+            $version,
+            'A new semantic version number was not returned.'
+        );
+
+        self::assertEquals(
+            $this->version->getBuild(),
+            $version->getBuild(),
+            'The build metadata data was not kept.'
+        );
+
+        self::assertEquals(
+            $this->version->getMajor(),
+            $version->getMajor(),
+            'The new major version number was not set.'
+        );
+
+        self::assertEquals(
+            $this->version->getMinor(),
+            $version->getMinor(),
+            'The minor version number was not kept.'
+        );
+
+        self::assertEquals(
+            $number,
+            $version->getPatch(),
+            'The new patch version number was not set.'
+        );
+
+        self::assertEquals(
+            $this->version->getPreRelease(),
+            $version->getPreRelease(),
+            'The pre-release metadata was not kept.'
+        );
+    }
+
+    /**
+     * Verify that the pre-release metadata can be set.
+     *
+     * @covers ::setPreRelease
+     */
+    public function testSetNewPreReleaseMetadata()
+    {
+        $metadata = ['n', 'r', 'g'];
+        $version = $this->version->setPreRelease($metadata);
+
+        self::assertNotSame(
+            $this->version,
+            $version,
+            'A new semantic version number was not returned.'
+        );
+
+        self::assertEquals(
+            $this->version->getBuild(),
+            $version->getBuild(),
+            'The build metadata data was not kept.'
+        );
+
+        self::assertEquals(
+            $this->version->getMajor(),
+            $version->getMajor(),
+            'The major version number was not kept.'
+        );
+
+        self::assertEquals(
+            $this->version->getMinor(),
+            $version->getMinor(),
+            'The minor version number was not kept.'
+        );
+
+        self::assertEquals(
+            $this->version->getPatch(),
+            $version->getPatch(),
+            'The patch version number was not kept.'
+        );
+
+        self::assertEquals(
+            $metadata,
+            $version->getPreRelease(),
+            'The new pre-release metadata was not set.'
+        );
+    }
+
+    /**
      * Creates a new semantic version number.
      */
     protected function setUp()
