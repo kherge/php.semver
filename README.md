@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/kherge-php/semver.svg?branch=master)](https://travis-ci.org/kherge-php/semver)
+[![Packagist](https://img.shields.io/packagist/v/kherge/semver.svg)](https://packagist.org/packages/kherge/semver)
+[![Packagist Pre Release](https://img.shields.io/packagist/vpre/kherge/semver.svg)](https://packagist.org/packages/kherge/semver)
+
 Version
 =======
 
