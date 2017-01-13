@@ -8,8 +8,8 @@
         "Apache-2.0"
     ],
     "support": {
-        "issues": "https://github.com/kherge/version/issues",
-        "source": "https://github.com/kherge/version"
+        "issues": "https://github.com/kherge-php/version/issues",
+        "source": "https://github.com/kherge-php/version"
     },
 
     "authors": [
