@@ -27,7 +27,7 @@ interface VersionInterface
      *
      * @return string The string representation.
      */
-    public function __toString();
+    public function __toString() : string;
 
     /**
      * Returns the build metadata.

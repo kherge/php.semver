@@ -50,7 +50,7 @@ REGEX
  * @return boolean Returns `true` if the string representation is a valid
  *                 semantic version number. Otherwise, `false` is returned.
  */
-function is_valid(string $string)
+function is_valid(string $string) : bool
 {
     return (0 < preg_match(VERSION_FORMAT, $string));
 }
@@ -70,7 +70,7 @@ function is_valid(string $string)
  *
  * @return Version The semantic version number value object.
  */
-function parse(string $string)
+function parse(string $string) : Version
 {
     $components = parse_components($string);
 

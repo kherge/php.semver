@@ -74,7 +74,7 @@ class Version implements VersionInterface
     /**
      * {@inheritdoc}
      */
-    public function __toString()
+    public function __toString() : string
     {
         $preRelease = '';
 
