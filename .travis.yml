@@ -7,9 +7,7 @@ branches:
 git:
     depth: 1
 
-language: php
-
-matrix:
+jobs:
 
     allow_failures:
         - php: nightly
@@ -25,6 +23,6 @@ matrix:
           dist: trusty
           group: edge
 
-script: phpunit --testdox
+language: php
 
-sudo: false
+script: phpunit --testdox
