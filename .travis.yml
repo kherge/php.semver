@@ -1,5 +1,5 @@
 before_script:
-    - curl -sSfL -o ~/.phpenv/versions/7.0/bin/phpunit https://phar.phpunit.de/phpunit-6.phar
+    - curl -sSfL -o ~/.phpenv/versions/7.0/bin/phpunit https://phar.phpunit.de/phpunit-5.phar
     - composer install --dev --no-interaction --prefer-source
 
 branches:
